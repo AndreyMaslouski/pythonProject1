@@ -68,6 +68,7 @@ while True:
                 surface.blit(render_end, (RES // 2 - 200, RES // 3))
                 pygame.display.flip()
                 close_game()
+
     #  управление
     key = pygame.key.get_pressed()
     if key[pygame.K_w]:
