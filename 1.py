@@ -62,10 +62,10 @@ while True:
         snake_speed = max(snake_speed, 4)
 
         #  Конец игры
-        if x < 0 or x > RES - SIZE or y < 0 or y > RES - SIZE or len(snake) != len(set(snake)):
-            while True:
+    if x < 0 or x > RES - SIZE or y < 0 or y > RES - SIZE or len(snake) != len(set(snake)):
+        while True:
                 render_end = font_end.render('GAME OVER!', 1, pygame.Color('orange'))
-                surface.blit(render_end,(RES//2-200,RES//3))
+                surface.blit(render_end, (RES // 2 - 200, RES // 3))
                 pygame.display.flip()
                 close_game()
-            
+    #  управление
