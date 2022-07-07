@@ -1,7 +1,7 @@
 import pygame
 from random import randrange
 
-# основные настройки
+# основные настройки![](290118.jpg)
 RES = 800
 SIZE = 50
 
@@ -23,14 +23,14 @@ surface = pygame.display.set_mode([RES, RES])
 clock = pygame.time.Clock()
 font_score = pygame.font.SysFont('Arial', 26, bold=True)
 font_end = pygame.font.SysFont('Arial', 66, bold=True)
-img = pygame.image.load('5.jpg').convert()
+img = pygame.image.load('290118.jpg').convert()
 
 
 # закрытие игры
 
 def close_game():
     for event in pygame.event.get():
-        if every.type == pygame.QUIT:
+        if event.type == pygame.QUIT:
             exit()
 
 
@@ -55,11 +55,11 @@ while True:
 
     # Поедание еды
     if snake[-1] == apple:
-        apple = randrange(SIZE), RES - SIZE, SIZE), randrange(SIZE), RES - SIZE, SIZE)
+        apple = randrange(SIZE, RES - SIZE, SIZE), randrange(SIZE, RES - SIZE, SIZE)
         length += 1
         score += 1
         snake_speed -= 1
-        snake_speed = max(snake_speed, 4)
+        snake_speed = max(snake_speed,4)
 
         #  Конец игры
     if x < 0 or x > RES - SIZE or y < 0 or y > RES - SIZE or len(snake) != len(set(snake)):
@@ -69,3 +69,20 @@ while True:
                 pygame.display.flip()
                 close_game()
     #  управление
+    key = pygame.key.get_pressed()
+    if key[pygame.K_w]:
+        if dirs['W']:
+            dx,dy = 0, -1
+            dirs = {'W':True,'S':False,'A':True,'D':True}
+    elif key[pygame.K_s]:
+        if dirs['S']:
+            dx,dy = 0, -1
+            dirs = {'W':False,'S':True,'A':True,'D':True}
+    elif key[pygame.K_a]:
+        if dirs['A']:
+            dx,dy = 0, -1
+            dirs = {'W':True,'S':False,'A':True,'D':False}
+    elif key[pygame.K_d]:
+        if dirs['D']:
+            dx,dy = 0, -1
+            dirs = {'W':True,'S':False,'A':False,'D':True}
